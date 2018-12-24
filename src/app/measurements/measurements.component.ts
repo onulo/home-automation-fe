@@ -16,7 +16,7 @@ export class MeasurementsComponent implements OnInit {
   constructor(private measurementsService: MeasurementsService) { }
 
   ngOnInit() {
-    interval(5000).pipe(
+    interval(30000).pipe(
       startWith(0),
       switchMap(() => this.measurementsService.getMeasurements())
     )
