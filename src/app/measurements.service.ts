@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Measurement } from './measurement';
+import {Observable} from "rxjs/internal/Observable";
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class MeasurementsService {
 
   constructor(private http: HttpClient) { }
 
-  getMeasurements() {
+  getMeasurements(): Observable<Measurement[]> {
     return this.http.get<Measurement[]>(this.measurementUrl);
   }
 
