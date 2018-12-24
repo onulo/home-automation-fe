@@ -21,7 +21,6 @@ export class MeasurementsComponent implements OnInit {
       switchMap(() => this.measurementsService.getMeasurements())
     )
       .subscribe((data: Measurement[]) => {
-        console.log(data)
         this.measurements = data;
       });
   }
