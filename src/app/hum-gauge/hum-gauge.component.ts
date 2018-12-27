@@ -14,9 +14,9 @@ export class HumGaugeComponent implements OnInit {
   gaugeType = "semi";
   gaugeSize = 110;
   thresholdConfig = {
-    '0': { color: 'blue' },
-    '45': { color: 'green' },
-    '80': { color: 'red' }
+    '0': { color: '#757575' },
+    '45': { color: '#3F51B5' },
+    '80': { color: '#FF4081' }
     };
 
   constructor() { }

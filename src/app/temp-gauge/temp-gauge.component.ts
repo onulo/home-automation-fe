@@ -11,12 +11,12 @@ export class TempGaugeComponent implements OnInit {
   @Input() measurement: Measurement;
 
   gaugeSize = 130;
-  gaugeType = "semi";
+  gaugeType = "arch";
   thresholdConfig = {
-    '-20': { color: 'blue' },
-    '19': { color: 'green' },
-    '25': { color: 'orange' },
-    '35': { color: 'red' }
+    '-20': { color: '#C5CAE9' },
+    '19': { color: '#3F51B5' },
+    '25': { color: '#FF4081' }
+    
   };
 
   constructor() { }
