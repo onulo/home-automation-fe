@@ -1,7 +1,27 @@
-<div>
-  <div *ngFor=" let measurement of measurements;">
-    <div>{{measurement.value}}</div>
-    <div>{{measurement.unit}}</div>
-    <div>{{measurement.sensorName}}</div>
-  </div>
-</div>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Indoor</mat-card-title>
+    </mat-card-header>
+    <mat-grid-list cols="2" rowHeight="1.2:1">
+        <mat-grid-tile>
+            <app-temp-gauge *ngIf="measurements != undefined" [measurement]="measurements[0]"></app-temp-gauge>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-hum-gauge *ngIf="measurements != undefined" [measurement]="measurements[1]"></app-hum-gauge>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Outdoor</mat-card-title>
+    </mat-card-header>
+    <mat-grid-list cols="2" rowHeight="1.2:1">
+        <mat-grid-tile>
+            <app-temp-gauge *ngIf="measurements != undefined" [measurement]="measurements[2]"></app-temp-gauge>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <app-hum-gauge *ngIf="measurements != undefined" [measurement]="measurements[3]"></app-hum-gauge>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>

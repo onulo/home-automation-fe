@@ -1,4 +1,4 @@
 export class LampStatus {
-  isLampOn: boolean;
-  isMotionDetectionOn: boolean;
-  }
+  lampOn: boolean;
+  nightModeOn: boolean;
+}

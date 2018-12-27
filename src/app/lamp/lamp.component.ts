@@ -7,45 +7,65 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   selector: 'app-lamp',
   styleUrls: ['./lamp.component.css'],
   template: `
-            <mat-slide-toggle 
-              [checked]="isLampOn" 
-              (change)="toggleLamp($event)">
-            Turn ON
-            </mat-slide-toggle>
-            <mat-slide-toggle 
-              [checked]="isMotionDetectionOn" 
-              (change)="toggleNightMode($event)">
-            Night mode
-            </mat-slide-toggle>
-            `
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Lamp</mat-card-title>
+    </mat-card-header>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>
+        <mat-slide-toggle 
+          [checked]="isLampOn" 
+          (change)="toggleLamp($event)">
+          Turn ON
+        </mat-slide-toggle>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-slide-toggle 
+          [checked]="isNightModeOn" 
+          (change)="toggleNightMode($event)">
+          Night Mode
+        </mat-slide-toggle>
+      </mat-grid-tile>
+    </mat-grid-list>
+</mat-card>
+     `
 })
 export class LampComponent implements OnInit {
-  
+ 
   isLampOn: boolean;
-  isMotionDetectionOn: boolean;
+  isNightModeOn: boolean;
 
   constructor(private lampService: LampService) { }
 
   ngOnInit() {
     this.lampService.getLampStatus().subscribe((data: LampStatus) => {
-      this.isLampOn = data.isLampOn;
-      this.isMotionDetectionOn = data.isMotionDetectionOn;
+      this.isLampOn = data.lampOn;
+      this.isNightModeOn = data.nightModeOn;
     });
   }
 
   toggleLamp(event: MatSlideToggleChange) {
-    console.log(event);
-    this.lampService.toggleLamp().subscribe((data: boolean) => {
-      this.isLampOn = data;
-    });
-
+    if (event.checked == true) {
+      this.lampService.lampOn().subscribe((data: boolean) => {
+        this.isLampOn = data;
+      });
+    } else {
+      this.lampService.lampOff().subscribe((data: boolean) => {
+        this.isLampOn = data;
+      });
+    }
   }
 
   toggleNightMode(event: MatSlideToggleChange) {
-    console.log(event);
-    this.lampService.toggleNightMode().subscribe((data: boolean) => {
-      this.isMotionDetectionOn = data;
-    });
+    if (event.checked == true)
+      this.lampService.nightModeOn().subscribe((data: boolean) => {
+        this.isNightModeOn = data;
+      });
+    else {
+      this.lampService.nightModeOff().subscribe((data: boolean) => {
+        this.isNightModeOn = data;
+      });
+    }
   }
 
 }

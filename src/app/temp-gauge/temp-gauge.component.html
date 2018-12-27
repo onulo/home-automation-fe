@@ -1,0 +1,4 @@
+<ngx-gauge *ngIf="measurement != undefined" [size]="gaugeSize" [min]="-20" [max]="45" [type]="gaugeType" [thick]="8"
+  [value]="measurement.measuredValue.value" [label]="measurement.sensorDesc" [append]="measurement.measuredValue.unitSymbol"
+  [thresholds]="thresholdConfig">
+</ngx-gauge>

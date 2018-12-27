@@ -8,9 +8,13 @@ import { Observable } from "rxjs/internal/Observable";
 })
 export class LampService {
 
-  lampStatusUrl = 'http://192.168.0.20:9999/v2';
-  toggleLampUrl = 'http://192.168.0.20:9999/v2/toggle';
-  toggleNightModeUrl = 'http://192.168.0.20:9999/v2/nightMode';
+  private lampStatusUrl = 'http://127.0.0.1:9999/lamp/status';
+  
+  private lampOnUrl = 'http://127.0.0.1:9999/lamp/on';
+  private lampOffUrl = 'http://127.0.0.1:9999/lamp/off';
+
+  private nightModeOnUrl = 'http://127.0.0.1:9999/lamp/nightModeOn';
+  private nightModeOffUrl = 'http://127.0.0.1:9999/lamp/nightModeOff';
 
   constructor(private http: HttpClient) { }
   
@@ -18,13 +22,20 @@ export class LampService {
     return this.http.get<LampStatus>(this.lampStatusUrl);
   }
 
-  toggleLamp() : Observable<boolean> {
-    return this.http.get<boolean>(this.toggleLampUrl);
+  lampOn() : Observable<boolean> {
+    return this.http.get<boolean>(this.lampOnUrl);
   }
 
-  toggleNightMode() : Observable<boolean>{
-    return this.http.get<boolean>(this.toggleNightModeUrl);
+  lampOff() : Observable<boolean> {
+    return this.http.get<boolean>(this.lampOffUrl);
   }
 
+  nightModeOn() : Observable<boolean>{
+    return this.http.get<boolean>(this.nightModeOnUrl);
+  }
+
+  nightModeOff() : Observable<boolean>{
+    return this.http.get<boolean>(this.nightModeOffUrl);
+  }
 
 }

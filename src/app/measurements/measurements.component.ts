@@ -6,8 +6,8 @@ import { startWith, switchMap } from "rxjs/operators";
 
 @Component({
   selector: 'app-measurements',
+  styleUrls: ['./measurements.component.css'],
   templateUrl: './measurements.component.html',
-  styleUrls: ['./measurements.component.css']
 })
 export class MeasurementsComponent implements OnInit {
 
@@ -24,5 +24,7 @@ export class MeasurementsComponent implements OnInit {
         this.measurements = data;
       });
   }
+
+
 
 }

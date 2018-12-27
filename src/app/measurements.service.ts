@@ -9,7 +9,7 @@ import {Observable} from "rxjs/internal/Observable";
 })
 export class MeasurementsService {
 
-  measurementUrl = "http://192.168.0.20:9999/v2/measurements"
+  measurementUrl = "http://127.0.0.1:9999/measurements";
 
   constructor(private http: HttpClient) { }
 

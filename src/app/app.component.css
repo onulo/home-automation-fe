@@ -1,0 +1,15 @@
+body{
+    margin: 0px;
+}
+
+.fillSpace{
+    flex: 1 1 auto;
+}
+
+.card{
+    margin: 8px;
+}
+
+router-outlet {
+    position: absolute;
+  }
